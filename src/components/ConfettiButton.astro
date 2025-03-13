@@ -1,0 +1,14 @@
+<button  class="bg-pink-500 rounded-md px-4 py-2 text-stone-50 hover:bg-pink-800 shadow-md"  data-confetti-button> Celebrate!</button>
+
+<script>
+  // Import npm modules.
+  import confetti from 'canvas-confetti';
+
+  // Find our component DOM on the page.
+  const buttons = document.querySelectorAll('[data-confetti-button]');
+
+  // Add event listeners to fire confetti when a button is clicked.
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => confetti());
+  });
+</script>
