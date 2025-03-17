@@ -1,28 +1,23 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import Title from '../components/Title.astro';
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Title from "../components/Title.astro";
 import "../styles/global.css";
 
-
-import ConfettiButton from '../components/ConfettiButton.astro';
-import Images from '../components/Images.astro';
-import Imagen2 from '../components/imagen2.astro';
-import Button from '../components/Button.astro';
-
+import ConfettiButton from "../components/ConfettiButton.astro";
+import Imagenes3 from "../components/Imagenes3.astro";
+import Button from "../components/Button.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-  
 <Layout>
-	<Title/>
-	<Welcome />
-	<div>
-	<Images/>
-	<Imagen2/>
-	<Button button_text="Partner" />
-</div>
-	<ConfettiButton/>
+  <Title />
+  <Welcome />
+  <div>
+    <Imagenes3 />
+    <Button />
+  </div>
+  <ConfettiButton />
 </Layout>
