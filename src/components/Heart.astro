@@ -1,0 +1,50 @@
+---
+import "./Heart.css";
+import Title from "../components/Title.astro";
+---
+
+<Title />
+<button
+  type="button"
+  id="startStop"
+  class="startStop focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+  >Heart</button
+>
+<script>
+  function hearts() {
+    const btn = document.getElementById("startStop");
+    let btnStatus = "stopped";
+
+    let inter: number | null;
+    inter = null;
+
+    function createHeart() {
+      const heart = document.createElement("img");
+      heart.src = "https://pngimg.com/uploads/heart/heart_PNG51335.png";
+      heart.classList.add("heart");
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.animationDuration = `${Math.random() * 5 + 3}s`;
+      // heart.innerText = "🦄";
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+    function startStop() {
+      if (btn === null) return;
+      if (btnStatus === "stopped") {
+        btn.innerHTML = "STOP";
+        inter = setInterval(createHeart, 100);
+        btnStatus = "started";
+      } else {
+        btn.innerHTML = "START";
+        if (inter === null) return;
+        clearInterval(inter);
+        btnStatus = "stopped";
+      }
+    }
+    if (btn === null) return;
+    btn.addEventListener("click", () => startStop());
+  }
+  hearts();
+</script>

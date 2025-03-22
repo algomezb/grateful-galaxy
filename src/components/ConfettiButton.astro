@@ -1,42 +1,52 @@
-
 <div class="flex justify-center pt-4">
-<button  class="  bg-pink-500 rounded-md px-4 py-2 text-stone-50 hover:bg-pink-800 shadow-md"  data-confetti-button> Celebrate!</button>
+  <button
+    class="bg-pink-500 rounded-md px-4 py-2 text-stone-50 hover:bg-pink-800 shadow-md"
+    data-confetti-button
+  >
+    Celebrate!</button
+  >
 </div>
 <script>
   // Import npm modules.
-import confetti from 'canvas-confetti';
+  import confetti from "canvas-confetti";
 
   // Find our component DOM on the page.
-  const buttons = document.querySelectorAll('[data-confetti-button]');
+  const buttons = document.querySelectorAll("[data-confetti-button]");
 
-///
-function firewok(){var duration = 15 * 1000;
-const animationEnd = Date.now() + duration;
-const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+  ///
+  function firewok() {
+    var duration = 15 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-function randomInRange(min:number, max:number) {
-  return Math.random() * (max - min) + min;
-}
+    function randomInRange(min: number, max: number) {
+      return Math.random() * (max - min) + min;
+    }
 
-const interval = setInterval(function() {
-  const timeLeft = animationEnd - Date.now();
+    const interval = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
 
-  if (timeLeft <= 0) {
-    return clearInterval(interval);
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+      // since particles fall down, start a bit higher than random
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      });
+    }, 250);
   }
-
-  const particleCount = 50 * (timeLeft / duration);
-  // since particles fall down, start a bit higher than random
-  confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-  confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
-}, 250);
-
-
-}
-
 
   // Add event listeners to fire confetti when a button is clicked.
   buttons.forEach((button) => {
-  button.addEventListener('click', () => firewok());
+    button.addEventListener("click", () => firewok());
   });
 </script>
