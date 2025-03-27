@@ -21,6 +21,7 @@ body {
 
 .heart {
   position: fixed;
+  z-index: -1;
   top: -1vh;
   width: 25px;
   height: auto;
